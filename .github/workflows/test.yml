@@ -2,11 +2,11 @@ name: Tests
 
 on:
   push:
-#    branches:
-#      - main
+    branches:
+      - main
   pull_request:
-#    branches:
-#      - main
+    branches:
+      - main
 
 jobs:
   run:
@@ -16,7 +16,6 @@ jobs:
       max-parallel: 3
       matrix:
         php:
-          - 7.1
           - 7.2
           - 7.3
           - 7.4
