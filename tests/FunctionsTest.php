@@ -34,12 +34,13 @@ class FunctionsTest extends TestCase
         );
     }
 
-    public function getEnvTestParsingData() {
+    public function getEnvTestParsingData(): array
+    {
         $faker = Factory::create();
 
         $no = $faker->numberBetween();
         $str = $faker->text();
-        $no2 = $faker->randomFloat();
+        $no2 = round($faker->randomFloat(), 5);
 
         return [
             ['true', true],
