@@ -2,6 +2,7 @@
 namespace Imponeer\Env\Tests;
 
 use Faker\Factory;
+use PHPUnit\Framework\Attributes\DataProvider;
 use PHPUnit\Framework\TestCase;
 
 /**
@@ -9,7 +10,7 @@ use PHPUnit\Framework\TestCase;
  */
 class FunctionsTest extends TestCase
 {
-    public function testEnvFunctionExists(): void
+    final public function testEnvFunctionExists(): void
     {
         $this->assertTrue(
             function_exists('env'),
@@ -17,7 +18,7 @@ class FunctionsTest extends TestCase
         );
     }
 
-    public function testEnvNonExistedVarReturning(): void
+    final public function testEnvNonExistedVarReturning(): void
     {
         $faker = Factory::create();
         $envVariableName = 'VAR_' . $faker->word();
@@ -34,7 +35,7 @@ class FunctionsTest extends TestCase
         );
     }
 
-    public function getEnvTestParsingData(): array
+    final public static function provideEnvTestParsingData(): array
     {
         $faker = Factory::create();
 
@@ -52,10 +53,8 @@ class FunctionsTest extends TestCase
         ];
     }
 
-    /**
-     * @dataProvider getEnvTestParsingData
-     */
-    public function testEnvBoolTrue($envValue, $parseValue): void {
+    #[DataProvider('provideEnvTestParsingData')]
+    final public function testEnvBoolTrue(string $envValue, mixed$parseValue): void {
         $faker = Factory::create();
         $envVariableName = 'VAR_' . $faker->word();
         putenv("$envVariableName=$envValue");
