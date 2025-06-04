@@ -4,27 +4,85 @@
 
 # ENV
 
-Small helper dealing with environment variables.
+A lightweight and efficient PHP helper library for managing environment variables with a clean and simple API.
 
 ## Installation
 
-To install and use this package, we recommend to use [Composer](https://getcomposer.org):
+To install this package using [Composer](https://getcomposer.org):
 
 ```bash
 composer require imponeer/env
 ```
 
-Otherwise, you need to include manually files from `src/` directory.
+For manual installation, clone this repository and include the files from the `src/` directory in your project.
 
-## Usage example
+## Usage
+
+### Basic Usage
 
 ```php
-$path = env('PATH', '/src');
-$enable = !!env('ENABLE_APP');
+// Get an environment variable with a default value
+$path = env('APP_PATH', '/var/www');
+
+// Get a boolean environment variable
+$isDebug = (bool) env('APP_DEBUG', false);
+
+// Get an integer value
+$port = (int) env('APP_PORT', 8080);
 ```
 
-## How to contribute?
+## Development
 
-If you want to add some functionality or fix bugs, you can fork, change and create pull request. If you not sure how this works, try [interactive GitHub tutorial](https://skills.github.com).
+### Testing and Code Quality
 
-If you found any bug or have some questions, use [issues tab](https://github.com/imponeer/env/issues) and write there your questions.
+This project uses several tools to ensure code quality and reliability. Here are the available commands:
+
+**Run Unit Tests**
+Execute the test suite using PHPUnit:
+```bash
+composer test
+```
+
+**Check Code Style**
+Verify code adheres to PSR-12 standards:
+```bash
+composer phpcs
+```
+
+**Fix Code Style Issues**
+Automatically fix code style violations:
+```bash
+composer phpcbf
+```
+
+**Run Static Analysis**
+Perform static code analysis with PHPStan:
+```bash
+composer phpstan
+```
+
+
+
+## Contributing
+
+We welcome contributions! Here's how you can help:
+
+1. Fork the repository
+2. Create a feature branch: `git checkout -b feature/your-feature-name`
+3. Make your changes following PSR-12 coding standards
+4. Add tests for your changes
+5. Run the test suite: `composer test`
+6. Check code style: `composer phpcs`
+7. Fix any style issues: `composer phpcbf`
+8. Run static analysis: `composer phpstan`
+9. Commit your changes: `git commit -m 'Add some feature'`
+10. Push to the branch: `git push origin feature/your-feature-name`
+11. Open a pull request
+
+### Reporting Issues
+
+Found a bug or have a feature request? Please open an issue on our [GitHub Issues](https://github.com/imponeer/env/issues) page.
+
+## License
+
+This project is licensed under the MIT License - see the [LICENSE](LICENSE) file for details.
