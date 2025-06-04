@@ -35,6 +35,9 @@ class FunctionsTest extends TestCase
         );
     }
 
+    /**
+     * @return array<array{envValue: string, parseValue: mixed}>
+     */
     final public static function provideEnvTestParsingData(): array
     {
         $faker = Factory::create();
@@ -44,17 +47,35 @@ class FunctionsTest extends TestCase
         $no2 = round($faker->randomFloat(), 5);
 
         return [
-            ['true', true],
-            ['false', false],
-            [$no . '', $no],
-            [$str, $str],
-            ['null', null],
-            [$no2 . '', $no2],
+            [
+                'envValue' => 'true',
+                'parseValue' => true
+            ],
+            [
+                'envValue' => 'false',
+                'parseValue' => false
+            ],
+            [
+                'envValue' => $no . '',
+                'parseValue' => $no
+            ],
+            [
+                'envValue' => $str,
+                'parseValue' => $str
+            ],
+            [
+                'envValue' => 'null',
+                'parseValue' => null
+            ],
+            [
+                'envValue' => $no2 . '',
+                'parseValue' => $no2
+            ],
         ];
     }
 
     #[DataProvider('provideEnvTestParsingData')]
-    final public function testEnvBoolTrue(string $envValue, mixed$parseValue): void {
+    final public function testEnvBoolTrue(string $envValue, mixed $parseValue): void {
         $faker = Factory::create();
         $envVariableName = 'VAR_' . $faker->word();
         putenv("$envVariableName=$envValue");
