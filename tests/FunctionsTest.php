@@ -1,4 +1,5 @@
 <?php
+
 namespace Imponeer\Env\Tests;
 
 use Faker\Factory;
@@ -75,7 +76,8 @@ class FunctionsTest extends TestCase
     }
 
     #[DataProvider('provideEnvTestParsingData')]
-    final public function testEnvBoolTrue(string $envValue, mixed $parseValue): void {
+    final public function testEnvBoolTrue(string $envValue, mixed $parseValue): void
+    {
         $faker = Factory::create();
         $envVariableName = 'VAR_' . $faker->word();
         putenv("$envVariableName=$envValue");
@@ -85,5 +87,4 @@ class FunctionsTest extends TestCase
             "Incorrect parsed value"
         );
     }
-
 }
