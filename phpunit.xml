@@ -20,14 +20,6 @@
         timeoutForLargeTests="60"
         verbose="false">
 
-    <coverage includeUncoveredFiles="true">
-        <include>
-            <directory>src</directory>
-        </include>
-        <report>
-            <clover outputFile="log/clover.xml"/>
-        </report>
-    </coverage>
     <testsuites>
         <testsuite name="All">
             <directory suffix="Test.php">tests/</directory>
